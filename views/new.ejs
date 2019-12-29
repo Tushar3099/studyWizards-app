@@ -1,0 +1,33 @@
+<%- include("partials/header") %>
+
+<div class="container">
+    <div >
+            <div style="text-align: center;" >
+                <h1>Post your Question</h1>
+            </div>
+            
+            
+            <div style="width:30%; margin:25px auto;">
+                 <form action="/discuss/question" method="POST">
+                    <div class="form-group">
+                        <label for="">Question:</label>
+                        <input class="form-control" type="text" name="question" placeholder="You may start with What Who or How...">
+                    </div>  
+                    <div class="form-group">
+                        <input class="btn btn-lg btn-primary btn-block" type="submit">
+                    </div>
+                    <div class="form-group">
+                             
+                                <button class="btn btn-lg btn-block"><a href="/discuss" >Cancel</a></button>
+                            
+                    </div>
+                 </form>
+                
+            </div>
+    </div>
+            
+</div>
+
+
+
+<%- include("partials/footer") %>

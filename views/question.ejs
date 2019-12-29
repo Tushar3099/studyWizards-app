@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9" >
+            <div class="well">
+                <h1>Questions For You :</h1>
+                <% allPost.forEach((post)=>{ %>
+                     <div class="thumbnail">
+                         <strong>   <h4><%= post.question %></h4></strong>
+                         <!-- <div>
+                             <span>Asked by <em><%= post.creater.username %></em></span>
+                             <span style="float : right"><%= post.date %></span>
+                         </div> -->
+                         <div class="caption">
+                            <a href="/discuss/answer/<%= post._id%>" ><button class="btn btn-lg btn-primary btn-block" style="width : 5em">Answer</button></a>
+                         </div>
+                        
+                     </div>
+
+                <% }) %>
+            </div>             
+        </div>
+    </div>
+</div>
+
+
+
+<%- include("partials/footer") %>

@@ -73,7 +73,7 @@ app.get("/",(req,res)=>{
 })
 
 // Discuss Routes
-app.get("/discuss",isLoggedIn,(req,res)=>{
+app.get("/discuss",(req,res)=>{
 
     post.find().populate("answer").exec((err,allPost)=>{
 
@@ -87,11 +87,11 @@ app.get("/discuss",isLoggedIn,(req,res)=>{
 
 
 
-app.get("/discuss/question/new",(req,res)=>{
+app.get("/discuss/question/new",isLoggedIn,(req,res)=>{
     res.render("new.ejs")
 })
 
-app.post("/discuss/question",(req,res)=>{
+app.post("/discuss/question",isLoggedIn,(req,res)=>{
    post.create({
        question : req.body.question
    },(err,post)=>{
@@ -122,7 +122,7 @@ app.get("/discuss/question/:id",(req,res)=>{
 
 //Answer Routes
 
-app.get("/discuss/answer",(req,res)=>{
+app.get("/discuss/answer",isLoggedIn,(req,res)=>{
     post.find({},(err,allPost)=>{
         if(err)
         console.log(err)
@@ -132,7 +132,7 @@ app.get("/discuss/answer",(req,res)=>{
     })
 })
 
-app.get("/discuss/answer/:id",(req,res)=>{
+app.get("/discuss/answer/:id",isLoggedIn,(req,res)=>{
     post.findById(req.params.id,(err,post)=>{
         if(err)
         console.log(err)
@@ -142,7 +142,7 @@ app.get("/discuss/answer/:id",(req,res)=>{
        
 })
 
-app.post("/discuss/answer/:id",(req,res)=>{
+app.post("/discuss/answer/:id",isLoggedIn,(req,res)=>{
     post.findById(req.params.id,(err,post)=>{
         if(err)
         console.log(err)

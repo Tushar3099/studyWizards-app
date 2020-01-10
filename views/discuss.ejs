@@ -1,0 +1,37 @@
+<%- include("partials/header") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h5>Feeds</h5>
+            <ul>
+                <li>
+                     Information Technology
+                </li>
+                <li>
+                    Computer Science
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9" >
+            <div class="well">
+                <h1>All Posts :</h1>
+                <% allPost.forEach((post)=>{ %>
+                     <div class="thumbnail">
+                         <a href="/discuss/question/<%= post._id %>"><strong><%= post.question %></strong></a> 
+                         <div>
+                             <span>Asked by <em><%= post.creater.username %></em></span>
+                             <span style="float : right"><%= post.date.toDateString() %></span>
+                         </div>
+                         <p>Answers : <%= post.answer.length%></p>
+                     </div>
+
+                <% }) %>
+            </div>             
+        </div>
+    </div>
+</div>
+
+
+
+<%- include("partials/footer") %>

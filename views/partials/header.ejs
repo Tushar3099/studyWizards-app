@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>studyWizards</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet"  href="../../public/show.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+    <link rel="stylesheet"  href="/stylesheet/app.css">
 </head>
 <body>
         <nav class="navbar navbar-default">
@@ -22,7 +23,8 @@
                            <% } else{%>
                             <li><a href="/discuss/answer">Answer</a></li>
                             <li><a href="/discuss/question/new">Add Question</a></li>
-                            <li><a href="#">Signed in as <%=currentUser.username%></a></li> 
+                            <li><a href="#"><img src="<%= currentUser.image%>" alt="" style="border-radius: 50%; width: 30px; height: 30px;" ></a></li> 
+                            <li><a href="#"><%=currentUser.username%></a></li> 
                                 <li><a href="/logout">Log out</a></li>
                            <% }%>
                             

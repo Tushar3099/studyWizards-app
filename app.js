@@ -8,7 +8,8 @@ const passportLocalMongoose=require("passport-local-mongoose");
 
 var User = require("./models/users.js"),
     post = require("./models/post"),
-    answer = require("./models/answer")
+    answer = require("./models/answer"),
+    comment = require("./models/comment")
 
 mongoose.connect("mongodb://localhost/bot_kill",{useNewUrlParser:true,useUnifiedTopology: true});
 
@@ -110,15 +111,19 @@ app.post("/discuss/question",isLoggedIn,(req,res)=>{
 })
 
 app.get("/discuss/question/:id",(req,res)=>{
-    post.findById(req.params.id).populate("answer").exec((err,post)=>{
+    post.findById(req.params.id).populate({
+        path : "answer",
+        populate : { path : "comment"}
+    }).exec((err,post)=>{
         if(err)
         console.log(err) 
         else{
             console.log(post)
-            res.render("show.ejs",{post : post});
-        }       
-    })
-})   
+            res.render("show.ejs",{post : post})
+            }
+        })
+           
+    })      
 
 //Answer Routes
 
@@ -161,12 +166,42 @@ app.post("/discuss/answer/:id",isLoggedIn,(req,res)=>{
     })
 })
 
+// Commnet Routes
+
+app.post("/discuss/comment/:postid/:answerid",(req,res)=>{
+   answer.findById(req.params.answerid,(err,answer)=>{
+       if(err)
+       console.log(err)
+       else{
+       comment.create({},(err,comment)=>{
+            if(err)
+            console.log(err)
+            else{
+            comment.creater.username = req.user.username;
+            comment.creater.id = req.user.id;
+            comment.text = req.body.comment;
+            comment.save() ;
+            answer.comment.push(comment);
+            answer.save()
+            console.log(answer)
+            res.redirect("/discuss/question/" + req.params.postid)
+            }
+        
+        })    
+    console.log(answer);
+   }
+})
+
+})
+
 // Auth Routes
 
 app.get("/register",(req,res)=>{
     res.render("register");
 });
 app.post("/register",(req,res)=>{
+    var image=req.body.image;
+    
     var newUser=new User({username:req.body.username,email:req.body.email});
     User.register(newUser,req.body.password,(err,user)=>{
         if(err){
@@ -174,6 +209,9 @@ app.post("/register",(req,res)=>{
             return res.render("register");
         }
         else{
+            if(image!==""){
+                user.image = image;
+            }
             passport.authenticate("local")(req,res,()=>{
                 res.redirect("/discuss");
             })

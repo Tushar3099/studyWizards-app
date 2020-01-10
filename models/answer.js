@@ -15,7 +15,13 @@ var answerSchema = new mongoose.Schema({
         //         url : String
         //     }
         // ]
-    }
+    },
+    comment : [
+                {
+                    type : mongoose.Schema.Types.ObjectId ,
+                    ref : "comment"
+                }
+              ]
     
 
 })

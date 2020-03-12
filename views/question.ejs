@@ -14,10 +14,11 @@
                              <span>Asked by <em><%= post.creater.username %></em></span>
                              <span style="float : right"><%= post.date %></span>
                          </div> -->
+                         <% if(post.creater.username != currentUser.username){ %>
                          <div class="caption">
                             <a href="/discuss/answer/<%= post._id%>" ><button class="btn btn-lg btn-primary btn-block" style="width : 5em">Answer</button></a>
                          </div>
-                        
+                        <% } %>
                      </div>
 
                 <% }) %>

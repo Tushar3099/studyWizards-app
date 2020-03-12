@@ -8,15 +8,20 @@
             
             
             <div style="width:30%; margin:25px auto;">
-                 <form action="/discuss/answer/<%= post._id%>" method="POST">
-                    <div class="form-group">
+                 <form action="/discuss/answer/<%= post._id%>" method="POST" enctype="multipart/form-data">
                         <label for=""> <%= post.question %></label>
-                        <div class="well">
-                            <i class="image icon" id="brand" style="float: right;"></i>
-                            <textarea name="answer" id="" cols="35" rows="10"></textarea>
-                        </div>
-                        
-                    </div>  
+                        <!-- <textarea name="answer" id="" cols="30" rows="10"></textarea> -->
+                        <div id="editorjs"></div>
+                        <!-- <div class="well">
+                            <label id="upload" for="file-input">
+                                <i class="image icon" id="img-icon"></i>
+                            </label>
+                            <input type="file" id="file-input" name = "image" >
+                            <div contenteditable="true" id="new-ans">
+                                <% if(imgUpload) %>
+                                <%  console.log("anjhhadhhekjahdd"); %> 
+                            </div>
+                        </div>   -->
                     <div class="form-group">
                         <input class="btn btn-lg btn-primary btn-block" type="submit">
                     </div>
@@ -25,13 +30,21 @@
                                 <button class="btn btn-lg btn-block"><a href="/discuss/answer" >Cancel</a></button>
                             
                     </div>
+
+                    
                  </form>
                 
             </div>
+            <button id="save-button">Save</button>
     </div>
+    <div id="output"></div>
             
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script><!-- Header -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script><!-- Image -->
+ 
+<!-- <script src="../dist/editor.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
 
-
-
+<script src="/script/ans.js"></script>
 <%- include("partials/footer") %>   

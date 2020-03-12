@@ -12,16 +12,26 @@ var answerSchema = new mongoose.Schema({
         text : String
         // ,image : [
         //     {
-        //         url : String
+        //         url : String 
         //     }
         // ]
-    },
+              },
     comment : [
                 {
                     type : mongoose.Schema.Types.ObjectId ,
                     ref : "comment"
                 }
-              ]
+              ],
+    like : {
+        count : { type : Number , default : 0},
+        user  : [   
+                    {
+                        type : mongoose.Schema.Types.ObjectId,
+                        ref : "User"
+                    }  
+               ]
+    }
+
     
 
 })

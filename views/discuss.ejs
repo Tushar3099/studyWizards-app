@@ -1,35 +1,56 @@
 <%- include("partials/header") %>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <h5>Feeds</h5>
-            <ul>
-                <li>
-                     Information Technology
-                </li>
-                <li>
-                    Computer Science
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-9" >
-            <div class="well">
-                <h1>All Posts :</h1>
-                <% allPost.forEach((post)=>{ %>
-                     <div class="thumbnail">
-                         <a href="/discuss/question/<%= post._id %>"><strong><%= post.question %></strong></a> 
-                         <div>
-                             <span>Asked by <em><%= post.creater.username %></em></span>
-                             <span style="float : right"><%= post.date.toDateString() %></span>
+<div id="around">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="feeds">
+                    <h5>Feeds</h5>
+                    <ul>
+                        <li>
+                            <a href="#">Information Technology</a> 
+                        </li>
+                        <li>
+                            <a href="#">Computer Networks</a> 
+                        </li>
+                        <li>
+                            <a href="#">Machine Learning</a> 
+                        </li>
+                        <li>
+                            <a href="#">Ethical Hacking</a> 
+                        </li>
+                        <li>
+                            <a href="#">Operating System</a>
+                        </li>
+                        <li>
+                            <a href="#">Digital Circuits</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-md-9" >
+                    <h1>All Posts :</h1>
+                    <% allPost.forEach((post)=>{ %>
+                         <div class="ui piled segment">
+                             <a id="question" href="/discuss/question/<%= post._id %>"><strong><%= post.question %></strong></a> 
+                             <div>
+                                 <span> Asked by <em><%= post.creater.username %></em></span>
+                                 <span style="float : right"><%= post.date.toDateString() %></span>
+                             </div>
+                             <p>Answers : <%= post.answer.length%></p>
+                             <div class="ui label">
+                                <i class="comment icon"></i> 23
+                             </div>
+                             <div class="ui label">
+                                <i class="hand point up icon"></i> 15
+                             </div>
                          </div>
-                         <p>Answers : <%= post.answer.length%></p>
-                     </div>
-
-                <% }) %>
-            </div>             
+    
+                    <% }) %>            
+            </div>
         </div>
     </div>
+    
 </div>
 
 

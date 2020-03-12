@@ -2,6 +2,84 @@
     background-color: blanchedalmond;
 }
 
-#brand{
-    size: 10em;
+#img-icon{
+    font-size: 2em;
+    margin-top: 10px ;
+}
+
+#upload{
+    float : right;
+}
+
+#img-icon:hover{
+    cursor: pointer;
+    color : rgba(255, 187, 41, 0.836);
+}
+
+input[type=file] {
+    display: none;
+}
+
+#new-ans{
+    min-height: 180px;
+    width: 250px;
+    background-color: white;
+    border-radius: 2%;
+    padding: 16px 16px 32px;
+    position: relative;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+
+}
+
+.like{
+    display: none;
+}
+
+.unlike{
+    display : none; 
+}
+
+.thumbnail{
+    padding: 20px;;
+}
+#question{
+    font-size: 20px;
+}
+
+.feeds{
+    min-height: 300px;
+    width : 200px;
+    border-right : 1px solid rgb(34, 32, 32) ;
+}
+
+.feeds h5{
+    padding-left: 25px;
+}
+
+.feeds ul li {
+    padding: 8px;
+}
+
+.navbar{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    margin-bottom: 0em;
+    background-color: white;
+}
+
+.blogger b icon{
+    display: inline;
+    font-size: 5em;
+}
+
+body{
+    z-index: -1;
+    padding-top: 80px;
+    background-color: rgb(250, 250, 250);
+}
+
+.ui piled segment:hover{
+    background-color: burlywood ;
 }
